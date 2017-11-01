@@ -21,7 +21,7 @@ public class Calculator {
 		// System.out.println("20 / 10 = " +
 		//		... how would the it look like to use an anonymous class here???
 		//);
-		
+		//test
 
 	}
 }
