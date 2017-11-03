@@ -128,14 +128,17 @@ public class Animal {
 			System.out.println("Favorite char set to Space");
 		} else if (randomNumber == 10) {
 			System.out.println("Favorite char set to New line");
-		} else if ((randomNumber > 97) && (randomNumber < 122)) {
-			System.out.println("Favorite Char is a lowercase letter");
-		}else if (((randomNumber > 97) && (randomNumber < 122)) || ((randomNumber > 64) && (randomNumber < 91))) {
-			System.out.println("Favorite Char is a letter");
-		}else if(randomNumber == 8){
+		} else if(randomNumber == 8){
 			System.out.println("Favorite char set to backspace");	
 		}else {
 			System.out.println("Favorite Char set to: " + this.favoriteChar);
+		}
+		
+		
+		if ((randomNumber > 97) && (randomNumber < 122)) {
+			System.out.println("Favorite Char is a lowercase letter");
+		}else if (((randomNumber > 97) && (randomNumber < 122)) || ((randomNumber > 64) && (randomNumber < 91))) {
+			System.out.println("Favorite Char is a letter");
 		}
 	}
 
