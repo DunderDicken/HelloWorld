@@ -1,3 +1,4 @@
+package test;
  class Things{
 	 protected String name;
 	 protected static String descritption;
