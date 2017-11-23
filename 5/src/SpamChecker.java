@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
  *
  */
 public class SpamChecker {
-	  
+	  //Test
 	  public static final String BLACKHOLE = "sbl.spamhaus.org";
 
 	  public static void main(String[] args) throws UnknownHostException {
