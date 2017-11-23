@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class JavaFXClient extends Application  {
+public class JavaFXClient extends Application {
 
 	public static final int PORT = 2000;
 	private Socket socket;
@@ -36,28 +36,36 @@ public class JavaFXClient extends Application  {
 
 	Label label = new Label("????");
 
-
 	MessageProperty lastMessage = new MessageProperty();
 
 	class MessageProperty {
-		 private SimpleStringProperty message = new SimpleStringProperty();
-		 public final String getMessage(){return message.get();}
-		 public final void setMessage(String value){message.set(value);}
-		 public SimpleStringProperty messageProperty() {return message;}
-	}
+		private SimpleStringProperty message = new SimpleStringProperty();
 
+		public final String getMessage() {
+			return message.get();
+		}
+
+		public final void setMessage(String value) {
+			message.set(value);
+		}
+
+		public SimpleStringProperty messageProperty() {
+			return message;
+		}
+	}
 
 	private class OutputSetter implements Runnable {
 		private String textToSet;
+
 		public OutputSetter(String t) {
 			this.textToSet = t;
 		}
+
 		@Override
 		public void run() {
 			label.setText(textToSet);
 		}
 	}
-
 
 	// THIS IS THE METHOD TO BE HANGED ......
 
@@ -65,38 +73,39 @@ public class JavaFXClient extends Application  {
 		public void run() {
 			String lineFromServer;
 			try {
-			    while ((lineFromServer = in.readLine()) != null && !lineFromServer.equals("quit")) {
-			    System.out.println("From server: " + lineFromServer);
-			    
+				while ((lineFromServer = in.readLine()) != null && !lineFromServer.equals("quit")) {
+					System.out.println("From server: " + lineFromServer);
 
-                            // here is the space fo dealing the incoming data...
-                            // You want to update the Label label, but how?
-                            // have a look at the OutputSetter class....
-			  
+					// here is the space for dealing the incoming data...
+					// You want to update the Label label, but how?
+					// have a look at the OutputSetter class....
 
+					// Thread t = new Thread(new OutputSetter(lineFromServer));
+					// Platform.runLater(t);
+					//
+					// OutputSetter out = new OutputSetter(lineFromServer);
+					// Platform.runLater(out);
 
-			}
-			}
-			catch (IOException e) {
+					Platform.runLater(new OutputSetter(lineFromServer));
+
+				}
+			} catch (IOException e) {
 				System.out.println("Exception captured: " + e);
 			}
 		}
-	} //class ServerListener
+	} // class ServerListener
 
-
-	private void setupClientConnection () {
+	private void setupClientConnection() {
 		InetAddress addr;
 		try {
 			addr = InetAddress.getByName(null);
-		Socket socket = new Socket(addr, PORT);
-		System.out.println("the new socket: " + socket);
-		in = new BufferedReader(
-				new InputStreamReader(socket.getInputStream()));
-		out = new PrintWriter(
-				new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-		kbd_reader = new BufferedReader(new InputStreamReader(System.in));
-		ServerListener t = new ServerListener();
-		t.start();
+			Socket socket = new Socket(addr, PORT);
+			System.out.println("the new socket: " + socket);
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+			kbd_reader = new BufferedReader(new InputStreamReader(System.in));
+			ServerListener t = new ServerListener();
+			t.start();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,8 +113,7 @@ public class JavaFXClient extends Application  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}
-
+	}
 
 	@Override
 	public void start(Stage primStage) throws Exception {
@@ -119,18 +127,22 @@ public class JavaFXClient extends Application  {
 		primStage.setHeight(150);
 
 		Button insultButton = new Button("Insult");
-		insultButton.setOnAction(ae -> {out.println("You ratpack!");});
+		insultButton.setOnAction(ae -> {
+			out.println("You ratpack!");
+		});
 
 		Button praiseButton = new Button("Praise");
-		praiseButton.setOnAction(ae -> {out.println("You are best!");});
+		praiseButton.setOnAction(ae -> {
+			out.println("You are the best!");
+		});
 
 		VBox vbox = new VBox();
-        vbox.setLayoutX(20);
-        vbox.setLayoutY(20);
-        HBox hbox1 = new HBox();
-        HBox hbox2 = new HBox();
+		vbox.setLayoutX(20);
+		vbox.setLayoutY(20);
+		HBox hbox1 = new HBox();
+		HBox hbox2 = new HBox();
 
-        hbox1.getChildren().add(insultButton);
+		hbox1.getChildren().add(insultButton);
 		hbox1.getChildren().add(praiseButton);
 		hbox1.setAlignment(Pos.BOTTOM_LEFT);
 		hbox1.setSpacing(10);
@@ -147,15 +159,10 @@ public class JavaFXClient extends Application  {
 		primStage.setScene(scene);
 		primStage.show();
 
-
 	}
 
-
-
-
-
-    public static void main(String[] args) {
-        launch(args);
-   }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }
