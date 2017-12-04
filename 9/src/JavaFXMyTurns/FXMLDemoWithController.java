@@ -1,4 +1,4 @@
-//package JavaFXMyTurns;
+package JavaFXMyTurns;
 
 import java.io.*;
 import java.net.*;

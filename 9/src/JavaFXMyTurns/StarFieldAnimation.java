@@ -1,4 +1,5 @@
-package starField;
+package JavaFXMyTurns;
+
 
 import java.util.Random;
 import javafx.animation.AnimationTimer;

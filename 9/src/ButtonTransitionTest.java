@@ -1,4 +1,4 @@
-package JavaFXMyTurns;
+
 
 import javafx.application.*;
 import javafx.animation.*;
@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import javafx.stage.*;
 import javafx.util.*;
+
 
 public class ButtonTransitionTest extends Application {
 
