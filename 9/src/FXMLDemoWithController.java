@@ -1,4 +1,4 @@
-package demoWithController;
+//package JavaFXMyTurns;
 
 import java.io.*;
 import java.net.*;
@@ -15,7 +15,6 @@ public class FXMLDemoWithController extends Application implements Initializable
 	@FXML private TextField username;
 	@FXML private PasswordField password;
 	@FXML private Button okButton;
-	@FXML private Label welcomeLabel;
 	// here you need to add something for the welcomeLabel
 
 	public void initialize(URL url, ResourceBundle rb) {
@@ -29,7 +28,6 @@ public class FXMLDemoWithController extends Application implements Initializable
 		System.out.println("Verifying " + username.getText()
 		+ ":" + password.getText()));
 		// here you need to add some action to e.g. welcomeLabel.setText("Welcome")
-		//welcomeLabel.setText("Welcome");
 	}
 
 	public static void main(String[] args) {
