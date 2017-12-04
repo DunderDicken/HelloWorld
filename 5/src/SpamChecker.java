@@ -5,12 +5,15 @@ import java.net.UnknownHostException;
 
 /**
  * Checks if a ip adress is a known spammer.
+ * <p>
+ * Takes a string and checks if given adress in string is present in "Spamhaus.org" 
+ * list of known spamsites.
  * 
- * @author Dunder
+ * @author Dick Karlsson
  *
  */
 public class SpamChecker {
-	  
+	  //Test
 	  public static final String BLACKHOLE = "sbl.spamhaus.org";
 
 	  public static void main(String[] args) throws UnknownHostException {
@@ -23,7 +26,7 @@ public class SpamChecker {
 	    }
 
 	  /**
-	   * 
+	   * Takes a string and check against given adress in BLACKHOLE.
 	   * @param arg Ip adress or name of site that will be checked
 	   * @return Boolean. True if arg was a known spammer, else returns false
 	   * 
