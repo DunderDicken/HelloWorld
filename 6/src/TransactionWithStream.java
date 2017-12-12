@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class TransactionWithStream {
@@ -44,18 +45,26 @@ public class TransactionWithStream {
 		// Here does the code start that you should replace by
 		// a stream-based formulation
 
+		//How this would look like,
+		//when done with streams?
+		//Write a corresponding
+		//implementation using
+		//streams using filter, sorted, collect
+
 		ArrayList<TransactionWithStream> groceryTransactions = new ArrayList<TransactionWithStream>();
 		for(TransactionWithStream t: allTransactions){
 			if(t.getType() == TransactionType.GROCERY){
 				groceryTransactions.add(t);
 			}
 		}
+
 		Collections.sort(groceryTransactions, new Comparator<TransactionWithStream>(){
 			@Override
 			public int compare(TransactionWithStream t1, TransactionWithStream t2) {
 				return t2.getValue().compareTo(t1.getValue());
 			}
 		});
+		
 		List<Integer> transactionIds = new ArrayList<>();
 		for(TransactionWithStream t: groceryTransactions){
 			transactionIds.add(t.getId());
@@ -71,18 +80,17 @@ public class TransactionWithStream {
 		// *************************************************
 		// add your stream-based solution here:
 
-		List<Integer> transactionsIds =
+	
+		List<Integer> lst = 
 				allTransactions.stream()
-				.filter(t -> t.getType() == TransactionType.GROCERY)
-				.sorted(Comparator.comparing(t -> ((TransactionWithStream) t).getValue()).reversed())
+				.filter(s -> s.getType() == TransactionType.GROCERY)
+				.sorted(Comparator.comparing(s -> ((TransactionWithStream) s).getValue()).reversed())
 				.map(TransactionWithStream::getId)
 				.collect(Collectors.toList());
 
-
 		// let's see what's in there
-		for (Integer i : transactionIds){
-			System.out.println(i);
-		}
+		
+		lst.stream().forEach(System.out::println);
 	}
 
 
