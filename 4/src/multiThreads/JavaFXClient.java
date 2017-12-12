@@ -67,7 +67,7 @@ public class JavaFXClient extends Application {
 		}
 	}
 
-	// THIS IS THE METHOD TO BE HANGED ......
+	// THIS IS THE METHOD TO BE CHANGED ......
 
 	private class ServerListener extends Thread {
 		public void run() {
