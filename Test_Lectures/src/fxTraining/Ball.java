@@ -1,6 +1,7 @@
 package fxTraining;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -12,7 +13,7 @@ public class Ball extends Circle {
 	public double radius;
 	private double fieldWidth;
 	private double fieldHeigth;
-	private ArrayList<Ball> balls;
+	private List<Ball> balls;
 
 	public Ball(double radius, double fieldWidth, double fieldHeigth, ArrayList<Ball> ballsList) {
 		super();
